@@ -1,6 +1,7 @@
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, Download } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { downloadXmp } from "@/lib/generate-xmp";
 
 interface Setting {
   name: string;
