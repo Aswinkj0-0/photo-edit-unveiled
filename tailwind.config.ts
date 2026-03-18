@@ -62,6 +62,10 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         elevated: "hsl(var(--surface-elevated))",
+        lavender: "hsl(var(--pastel-lavender))",
+        mint: "hsl(var(--pastel-mint))",
+        "pastel-pink": "hsl(var(--pastel-pink))",
+        peach: "hsl(var(--pastel-peach))",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -40,7 +40,7 @@ const PhotoUpload = ({ onImageSelected, isAnalyzing }: PhotoUploadProps) => {
 
   return (
     <label
-      className={`upload-zone flex flex-col items-center justify-center rounded-lg cursor-pointer transition-all duration-300 min-h-[280px] ${
+      className={`upload-zone flex flex-col items-center justify-center rounded-2xl cursor-pointer transition-all duration-300 min-h-[280px] ${
         isDragging ? "dragging" : ""
       } ${isAnalyzing ? "pointer-events-none opacity-50" : ""}`}
       onDragOver={(e) => {
@@ -58,7 +58,7 @@ const PhotoUpload = ({ onImageSelected, isAnalyzing }: PhotoUploadProps) => {
         disabled={isAnalyzing}
       />
       <div className="flex flex-col items-center gap-4 p-8">
-        <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
+        <div className="w-16 h-16 rounded-2xl bg-lavender/50 flex items-center justify-center">
           {isDragging ? (
             <ImageIcon className="w-7 h-7 text-primary" />
           ) : (
