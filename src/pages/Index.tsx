@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Aperture, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import PhotoUpload from "@/components/PhotoUpload";
 import AnalysisResults from "@/components/AnalysisResults";
+import logo from "@/assets/logo.png";
 
 interface AnalysisData {
   settings: { name: string; value: string; description: string }[];
@@ -72,11 +73,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border">
-        <div className="max-w-5xl mx-auto px-6 py-5 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-            <Aperture className="w-5 h-5 text-primary" />
-          </div>
+      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
+        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-3">
+          <img src={logo} alt="EditDecode logo" className="w-10 h-10 rounded-xl" />
           <div>
             <h1 className="text-xl font-bold text-foreground tracking-tight">
               Edit<span className="text-gradient">Decode</span>
@@ -95,7 +94,7 @@ const Index = () => {
               <PhotoUpload onImageSelected={handleImageSelected} isAnalyzing={isAnalyzing} />
             ) : (
               <div className="space-y-4">
-                <div className="glass-card rounded-lg overflow-hidden">
+                <div className="pastel-card rounded-2xl overflow-hidden">
                   <img
                     src={preview}
                     alt="Uploaded photo"
@@ -105,7 +104,7 @@ const Index = () => {
                 <button
                   onClick={resetUpload}
                   disabled={isAnalyzing}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors disabled:opacity-50"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors disabled:opacity-50"
                 >
                   ← Upload a different photo
                 </button>
@@ -116,7 +115,7 @@ const Index = () => {
           {/* Right: Results */}
           <div>
             {isAnalyzing && (
-              <div className="flex flex-col items-center justify-center min-h-[280px] glass-card rounded-lg">
+              <div className="flex flex-col items-center justify-center min-h-[280px] pastel-card rounded-2xl">
                 <Loader2 className="w-8 h-8 text-primary animate-spin mb-4" />
                 <p className="text-foreground font-medium">Analyzing your photo…</p>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -126,8 +125,10 @@ const Index = () => {
             )}
 
             {!isAnalyzing && !result && !preview && (
-              <div className="flex flex-col items-center justify-center min-h-[280px] glass-card rounded-lg text-center p-8">
-                <Aperture className="w-12 h-12 text-muted-foreground/30 mb-4" />
+              <div className="flex flex-col items-center justify-center min-h-[280px] pastel-card rounded-2xl text-center p-8">
+                <div className="w-16 h-16 rounded-2xl bg-lavender/50 flex items-center justify-center mb-4">
+                  <img src={logo} alt="" className="w-10 h-10" />
+                </div>
                 <p className="text-muted-foreground">
                   Upload an edited photo and we'll detect the settings used — exposure, color
                   grading, contrast and more.
@@ -136,7 +137,7 @@ const Index = () => {
             )}
 
             {!isAnalyzing && !result && preview && (
-              <div className="flex flex-col items-center justify-center min-h-[280px] glass-card rounded-lg text-center p-8">
+              <div className="flex flex-col items-center justify-center min-h-[280px] pastel-card rounded-2xl text-center p-8">
                 <p className="text-muted-foreground">Something went wrong. Try uploading again.</p>
               </div>
             )}

@@ -42,6 +42,12 @@ const AnalysisResults = ({ settings, colorGrading, style, mood }: AnalysisResult
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const zoneColors = {
+    highlights: "bg-pastel-pink/40",
+    midtones: "bg-lavender/40",
+    shadows: "bg-mint/40",
+  };
+
   return (
     <div className="space-y-6 animate-slide-up">
       {/* Header */}
@@ -49,7 +55,7 @@ const AnalysisResults = ({ settings, colorGrading, style, mood }: AnalysisResult
         <h2 className="text-xl font-semibold text-foreground">Detected Settings</h2>
         <button
           onClick={copyAll}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
         >
           {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
           {copied ? "Copied!" : "Copy All"}
@@ -58,7 +64,7 @@ const AnalysisResults = ({ settings, colorGrading, style, mood }: AnalysisResult
 
       {/* Style & Mood */}
       {(style || mood) && (
-        <div className="glass-card rounded-lg p-4 space-y-2">
+        <div className="pastel-card rounded-2xl p-4 space-y-2">
           {style && (
             <p className="text-sm">
               <span className="text-primary font-medium">Style:</span>{" "}
@@ -67,7 +73,7 @@ const AnalysisResults = ({ settings, colorGrading, style, mood }: AnalysisResult
           )}
           {mood && (
             <p className="text-sm">
-              <span className="text-primary font-medium">Mood:</span>{" "}
+              <span className="text-accent font-medium">Mood:</span>{" "}
               <span className="text-foreground">{mood}</span>
             </p>
           )}
@@ -79,11 +85,11 @@ const AnalysisResults = ({ settings, colorGrading, style, mood }: AnalysisResult
         {settings.map((setting) => (
           <div
             key={setting.name}
-            className="glass-card rounded-lg p-4 flex items-center justify-between"
+            className="pastel-card rounded-2xl p-4 flex items-center justify-between"
           >
             <div>
-              <p className="text-sm text-muted-foreground">{setting.name}</p>
-              <p className="text-xs text-muted-foreground/70 mt-0.5">{setting.description}</p>
+              <p className="text-sm text-foreground font-medium">{setting.name}</p>
+              <p className="text-xs text-muted-foreground mt-0.5">{setting.description}</p>
             </div>
             <span className="font-mono text-primary font-semibold text-sm whitespace-nowrap ml-4">
               {setting.value}
@@ -98,7 +104,7 @@ const AnalysisResults = ({ settings, colorGrading, style, mood }: AnalysisResult
           <h3 className="text-lg font-semibold text-foreground">Color Grading</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {(["highlights", "midtones", "shadows"] as const).map((zone) => (
-              <div key={zone} className="glass-card rounded-lg p-4 text-center">
+              <div key={zone} className={`rounded-2xl p-4 text-center ${zoneColors[zone]} border border-border`}>
                 <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">
                   {zone}
                 </p>

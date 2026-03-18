@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,54 +6,58 @@
 
 @layer base {
   :root {
-    --background: 220 20% 8%;
-    --foreground: 220 15% 90%;
+    --background: 240 30% 97%;
+    --foreground: 240 20% 20%;
 
-    --card: 220 18% 12%;
-    --card-foreground: 220 15% 90%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 20% 20%;
 
-    --popover: 220 18% 12%;
-    --popover-foreground: 220 15% 90%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 20% 20%;
 
-    --primary: 36 90% 55%;
-    --primary-foreground: 220 20% 8%;
+    --primary: 260 60% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 220 15% 75%;
+    --secondary: 170 45% 85%;
+    --secondary-foreground: 170 40% 30%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 240 20% 92%;
+    --muted-foreground: 240 10% 50%;
 
-    --accent: 36 90% 55%;
-    --accent-foreground: 220 20% 8%;
+    --accent: 330 55% 75%;
+    --accent-foreground: 330 50% 25%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 36 90% 55%;
+    --border: 240 15% 88%;
+    --input: 240 15% 88%;
+    --ring: 260 60% 65%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    --sidebar-background: 220 20% 6%;
-    --sidebar-foreground: 220 15% 90%;
-    --sidebar-primary: 36 90% 55%;
-    --sidebar-primary-foreground: 220 20% 8%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 220 15% 90%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 36 90% 55%;
+    --sidebar-background: 260 30% 96%;
+    --sidebar-foreground: 240 20% 20%;
+    --sidebar-primary: 260 60% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 170 45% 90%;
+    --sidebar-accent-foreground: 170 40% 30%;
+    --sidebar-border: 240 15% 88%;
+    --sidebar-ring: 260 60% 65%;
 
     /* Custom tokens */
-    --glass: 220 18% 12% / 0.7;
-    --glass-border: 220 15% 25%;
-    --glow-primary: 36 90% 55% / 0.15;
-    --surface-elevated: 220 18% 14%;
+    --pastel-lavender: 260 60% 90%;
+    --pastel-mint: 170 45% 88%;
+    --pastel-pink: 330 55% 90%;
+    --pastel-peach: 25 70% 90%;
+    --surface-elevated: 0 0% 100%;
+    --gradient-start: 260 60% 65%;
+    --gradient-end: 330 55% 75%;
+    --shadow-soft: 260 60% 65% / 0.1;
   }
 
   .dark {
-    /* Same as root - dark by default */
+    /* Same as root for now */
   }
 }
 
@@ -64,27 +68,23 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Mono', monospace;
   }
 }
 
 @layer utilities {
-  .glass-card {
-    background: hsl(var(--glass));
-    backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--glass-border));
-  }
-
-  .glow-amber {
-    box-shadow: 0 0 40px hsl(var(--glow-primary)), 0 0 80px hsl(var(--glow-primary));
+  .pastel-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 2px 16px hsl(var(--shadow-soft)), 0 1px 4px hsl(240 15% 88% / 0.3);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, hsl(36, 90%, 55%), hsl(36, 80%, 70%));
+    background: linear-gradient(135deg, hsl(260, 60%, 65%), hsl(330, 55%, 75%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -93,11 +93,18 @@
   .upload-zone {
     border: 2px dashed hsl(var(--border));
     transition: all 0.3s ease;
+    background: hsl(var(--pastel-lavender) / 0.3);
   }
 
   .upload-zone:hover,
   .upload-zone.dragging {
     border-color: hsl(var(--primary));
-    background: hsl(var(--glow-primary));
+    background: hsl(var(--pastel-lavender) / 0.6);
+    box-shadow: 0 0 30px hsl(var(--shadow-soft));
+  }
+
+  .pastel-badge {
+    background: linear-gradient(135deg, hsl(var(--pastel-lavender)), hsl(var(--pastel-mint)));
+    color: hsl(var(--foreground));
   }
 }
