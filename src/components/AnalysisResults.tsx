@@ -54,13 +54,25 @@ const AnalysisResults = ({ settings, colorGrading, style, mood }: AnalysisResult
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold text-foreground">Detected Settings</h2>
-        <button
-          onClick={copyAll}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
-        >
-          {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-          {copied ? "Copied!" : "Copy All"}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              downloadXmp(settings, colorGrading, style);
+              toast.success("Lightroom preset downloaded!");
+            }}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-accent text-accent-foreground font-medium text-sm hover:opacity-90 transition-opacity"
+          >
+            <Download className="w-4 h-4" />
+            .xmp Preset
+          </button>
+          <button
+            onClick={copyAll}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
+          >
+            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+            {copied ? "Copied!" : "Copy All"}
+          </button>
+        </div>
       </div>
 
       {/* Style & Mood */}
